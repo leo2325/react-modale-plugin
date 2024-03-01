@@ -6,7 +6,7 @@ import Spinner from './Spinner';
 import Blocker from './Blocker';
 
 // Fonction composant retournant l'interface du plug in.
-const Plugin = ({ message, closeFunction }) => {
+const Plugin = ({ message, closeFunction, containerId }) => {
   // Hooks useState 
   // Utilisés pour déclarer des états locaux contrôlant :
   // l'affichage du spinner et du modal respectivement.
@@ -50,8 +50,17 @@ const Plugin = ({ message, closeFunction }) => {
 };
 
 // Rendu de l'application :
+// Trouvez le conteneur où la racine ReactDOM doit être créée
+const containerId = 'plugin-container'; // ID du conteneur
+
+// Rendu de l'application :
 // Fonction createRoot: pour créer une racine de rendu pour le plugin.
 // Méthode render: pour rendre le composant Plugin à la racine.
-createRoot(document.getElementById('root')).render(<Plugin />);
+const root = document.getElementById(containerId);
+if (root) {
+  createRoot(root).render(<Plugin containerId={containerId} />);
+} else {
+  console.error(`Container with id '${containerId}' not found.`);
+}
 
 export default Plugin;
