@@ -15,8 +15,8 @@ const Plugin = ({ message, closeFunction }) => {
   const [showBlocker, setShowBlocker] = useState(true);
   // Hook useEffect 
   // Utilisé pour exécuter une action après le rendu initial du composant. 
-  // -> Crée un timer qui change les états après 2 secondes :
-  // masque le spinner et affiche le modal.
+  // -> Crée un timer qui change les états après 2 secondes:masque le spinner et affiche le modal.
+  // A des fins de démonstrations, si validé le spinner disparaît, setShowSpinner et setShowModal prendront une props et une condition.
   useEffect(() => {
     const timer = setTimeout(() => {
       setShowSpinner(false);
